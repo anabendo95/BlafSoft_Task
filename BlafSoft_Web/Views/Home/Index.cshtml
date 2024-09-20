@@ -1,0 +1,44 @@
+﻿@model List<TaskT>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <a asp-action="CreateTask"><button class="btn btn-primary">Create</button></a>
+
+    
+
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Task Id
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Decription
+            </th>
+            <th>
+                Status
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (TaskT task in Model)
+        {
+            <tr>
+                <td>@task.Id</td>
+                <td>@task.Title</td>
+                <td>@task.Description</td>
+                <td>@task.Status</td>
+                <td><a asp-action="Update" asp-route-id="@task.Id"><button class="btn btn-primary">Update</button></a></td>
+                <td><a asp-action="DeleteSubmit" asp-route-id="@task.Id"><button class="btn btn-primary">Delete</button></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
